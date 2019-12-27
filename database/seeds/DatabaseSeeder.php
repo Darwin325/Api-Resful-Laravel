@@ -24,16 +24,16 @@ class DatabaseSeeder extends Seeder
         Transaction::truncate();
         DB::table('category_product')->truncate();
 
-        $cantidadUsuarios = 1000;
+        $cantidadUsuarios = 200;
         $cantidadCategorias = 30;
-        $cantidadProductos = 1000;
-        $cantidadTransacciones = 1000;
+        $cantidadProductos = 200;
+        $cantidadTransacciones = 300;
 
 
         factory(User::class, $cantidadUsuarios)->create();
         factory(Category::class, $cantidadCategorias)->create();
 
-		factory(Product::class, $cantidadTransacciones)->create()->each(
+		factory(Product::class, $cantidadProductos)->create()->each(
 			function ($producto) {
 				$categorias = Category::all()->random(mt_rand(1, 5))->pluck('id');
 
