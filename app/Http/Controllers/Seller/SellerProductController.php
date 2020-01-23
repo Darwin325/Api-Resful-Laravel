@@ -25,8 +25,10 @@ class SellerProductController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param User $seller
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, User $seller)
     {
@@ -39,7 +41,7 @@ class SellerProductController extends ApiController
         $this->validate($request, $rules);
         $data = $request->all();
         $data['status'] = Product::PRODUCTO_NO_DISPONIBLE;
-        $data['image'] = '1.jpg';
+        $data['image'] = $request->image->store('');
         $data['seller_id'] = $seller->id;
         $product = Product::create($data);
         return $this->showOne($product, 201);
