@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'images',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +61,11 @@ return [
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
+        ],
+        'images' => [
+            'driver' => 'local',
+            'root' => public_path('img'),
+            'visibility' => 'public',
         ],
 
     ],
