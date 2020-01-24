@@ -25,10 +25,11 @@ class UserTransformer extends TransformerAbstract
     protected $availableIncludes = [
         //
     ];
-    
+
     /**
      * A Fractal transformer.
      *
+     * @param User $user
      * @return array
      */
     public function transform(User $user)
