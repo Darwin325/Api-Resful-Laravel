@@ -34,13 +34,13 @@ class ProductTransformer extends TransformerAbstract
     {
         return [
             'identifcador' => (int)$product->id,
-            'fechaCreacion' => (string)$product->created_at,
             'titulo' => (string)$product->name,
             'detalles' => (string)$product->description,
             'disponibles' => (string)$product->quantity,
             'estado' => (string)$product->quantity,
             'imagen' => url("img/{$product->image}"),
             'vendedor' => (int)$product->seller_id,
+            'fechaCreacion' => (string)$product->created_at,
             'fechaActualizacion' => (string)$product->updated_at,
             'fechaEliminacion' => isset($product->deleted_at) ? (string)$product->deleted_at : null,
         ];
